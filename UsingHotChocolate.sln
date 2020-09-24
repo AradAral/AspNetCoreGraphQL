@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingHotChocolate", "UsingHotChocolate\UsingHotChocolate.csproj", "{D499D7CA-E132-4AEB-B53E-A5B0CF5DF291}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore", "AppCore\AppCore.csproj", "{F9C4343A-9243-463A-9713-887F7D294459}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D499D7CA-E132-4AEB-B53E-A5B0CF5DF291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D499D7CA-E132-4AEB-B53E-A5B0CF5DF291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D499D7CA-E132-4AEB-B53E-A5B0CF5DF291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D499D7CA-E132-4AEB-B53E-A5B0CF5DF291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9C4343A-9243-463A-9713-887F7D294459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9C4343A-9243-463A-9713-887F7D294459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9C4343A-9243-463A-9713-887F7D294459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9C4343A-9243-463A-9713-887F7D294459}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D39E1D56-0594-4D2E-A8FE-950FED13B7CE}
+	EndGlobalSection
+EndGlobal
