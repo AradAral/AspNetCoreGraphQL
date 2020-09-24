@@ -6,26 +6,29 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Core.Migrations
+namespace AppCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200922010414_Initial")]
+    [Migration("20200924153423_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.8")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.0-rc.1.20451.13");
 
             modelBuilder.Entity("AspNetCoreGraphQL.Models.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -33,6 +36,32 @@ namespace Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Age = 76,
+                            Name = "Dale Carnegie"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Age = 46,
+                            Name = "Max Tegmark"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Age = 53,
+                            Name = "Sam Harris"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Age = 47,
+                            Name = "James Clear"
+                        });
                 });
 
             modelBuilder.Entity("AspNetCoreGraphQL.Models.Book", b =>
@@ -40,7 +69,7 @@ namespace Core.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
@@ -59,6 +88,40 @@ namespace Core.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorId = 1,
+                            Genre = "Self-help",
+                            Name = "How to Win Fiends and Influence People",
+                            Published = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AuthorId = 2,
+                            Genre = "Science",
+                            Name = "Life 3.0",
+                            Published = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AuthorId = 3,
+                            Genre = "Philosophy",
+                            Name = "Free Will",
+                            Published = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AuthorId = 4,
+                            Genre = "Self-help",
+                            Name = "Atomic Habits",
+                            Published = true
+                        });
                 });
 
             modelBuilder.Entity("AspNetCoreGraphQL.Models.Rating", b =>
@@ -66,7 +129,7 @@ namespace Core.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("BookId")
                         .HasColumnType("int");
@@ -88,6 +151,8 @@ namespace Core.Migrations
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("AspNetCoreGraphQL.Models.Rating", b =>
@@ -97,6 +162,18 @@ namespace Core.Migrations
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("AspNetCoreGraphQL.Models.Author", b =>
+                {
+                    b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("AspNetCoreGraphQL.Models.Book", b =>
+                {
+                    b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618
         }

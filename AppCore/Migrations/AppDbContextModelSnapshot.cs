@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Core.Migrations
+namespace AppCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -34,6 +34,32 @@ namespace Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Age = 76,
+                            Name = "Dale Carnegie"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Age = 46,
+                            Name = "Max Tegmark"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Age = 53,
+                            Name = "Sam Harris"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Age = 47,
+                            Name = "James Clear"
+                        });
                 });
 
             modelBuilder.Entity("AspNetCoreGraphQL.Models.Book", b =>
@@ -60,6 +86,40 @@ namespace Core.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorId = 1,
+                            Genre = "Self-help",
+                            Name = "How to Win Fiends and Influence People",
+                            Published = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AuthorId = 2,
+                            Genre = "Science",
+                            Name = "Life 3.0",
+                            Published = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AuthorId = 3,
+                            Genre = "Philosophy",
+                            Name = "Free Will",
+                            Published = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AuthorId = 4,
+                            Genre = "Self-help",
+                            Name = "Atomic Habits",
+                            Published = true
+                        });
                 });
 
             modelBuilder.Entity("AspNetCoreGraphQL.Models.Rating", b =>
