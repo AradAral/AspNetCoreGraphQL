@@ -1,16 +1,12 @@
 ﻿using AspNetCoreGraphQL;
 using AspNetCoreGraphQL.Models;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using HotChocolate;
 using HotChocolate.Types;
-using Mapster;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UsingHotChocolate.Mappers;
 using UsingHotChocolate.Schema.DTOs;
 
 namespace UsingHotChocolate.Schema
